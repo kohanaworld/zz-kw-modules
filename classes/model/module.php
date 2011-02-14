@@ -34,6 +34,10 @@ class Model_Module extends Jelly_Model {
 		));
 	}
 
+	/**
+	 * @param  $data
+	 * @return void
+	 */
 	public function process_crawler($data)
 	{
 		foreach($data as & $module)
@@ -61,6 +65,10 @@ class Model_Module extends Jelly_Model {
 		}
 	}
 
+	/**
+	 * @param array $names
+	 * @return array
+	 */
 	public function get_available(array $names)
 	{
 		if (empty($names))

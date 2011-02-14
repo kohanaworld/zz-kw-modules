@@ -60,6 +60,7 @@ class Model_Developer extends Jelly_Model {
 
 		try {
 			$this->save();
+			$user['developer'] = $this->id;
 		}
 		catch(Validation_Exception $e)
 		{
