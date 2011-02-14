@@ -14,6 +14,7 @@ class Controller_Cron_Module extends Controller_Cron {
 		if ($status === FALSE)
 		{
 			// @TODO throw exception? log error?
+			// smgladkovskiy: DB log table record + email notification, I think.
 			return;
 		}
 
@@ -22,9 +23,10 @@ class Controller_Cron_Module extends Controller_Cron {
 
 		while ( ! $stop)
 		{
+			sleep(1);
 			try {
 				$stop = FALSE === Module::import('kohana', 'php', $page);
-				if (time() - $started > 60*4)
+				if ( ! Kohana::$is_cli AND (time() - $started) > 60*4)
 				{
 					// limit execution time for ~4 minutes
 					echo 'time limit!'.PHP_EOL;
