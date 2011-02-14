@@ -69,7 +69,7 @@ class Model_Developer extends Jelly_Model {
 
 		// update module info
 		try {
-			$this->info->set($user)->save();
+			$this->info->set('developer', $this)->set($user)->save();
 		}
 		catch(Validation_Exception $e)
 		{
