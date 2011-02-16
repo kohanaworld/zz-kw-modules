@@ -48,7 +48,7 @@ class Model_Module extends Jelly_Model {
 			}
 
 			try {
-				$this->save();var_dump($module);
+				$this->save();
 				$this->info->set($module)->set('module', $this)->save();
 			}
 			catch(Validation_Exception $e)
