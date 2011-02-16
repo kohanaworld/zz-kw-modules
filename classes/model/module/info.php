@@ -27,6 +27,13 @@ class Model_Module_Info extends Jelly_Model {
 				'issues_closed' => new Jelly_Field_Integer(array(
 					'default'       => 0,
 				)),
+				'date_update'   => new Jelly_Field_Timestamp(array(
+					'auto_now_update' => TRUE,
+					'auto_now_create' => TRUE,
+				)),
+				'pushed_at'     => new Jelly_Field_Timestamp(array(
+					'column'        => 'date_update_github',
+				)),
 				'module'        => new Jelly_Field_BelongsTo,
 			));
 	}

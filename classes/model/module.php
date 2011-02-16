@@ -16,11 +16,8 @@ class Model_Module extends Jelly_Model {
 				'allow_null'        => FALSE,
 			)),
 			'homepage'      => new Jelly_Field_String,
-			'date_create'   => new Jelly_Field_Timestamp(array(
-				'auto_now_create'   => TRUE,
-			)),
-			'date_update'   => new Jelly_Field_Timestamp(array(
-				'auto_now_update'   => TRUE,
+			'created_at'    => new Jelly_Field_Timestamp(array(
+				'column'        => 'date_create',
 			)),
 			'has_wiki'      => new Jelly_Field_Boolean,
 			'has_issues'    => new Jelly_Field_Boolean,
@@ -51,7 +48,7 @@ class Model_Module extends Jelly_Model {
 			}
 
 			try {
-				$this->save();
+				$this->save();var_dump($module);
 				$this->info->set($module)->set('module', $this)->save();
 			}
 			catch(Validation_Exception $e)
