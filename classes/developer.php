@@ -1,5 +1,13 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Developer helper
+ *
+ * @package   KW-Core
+ * @author	  Kohana-World Development Team
+ * @license	  MIT License
+ * @copyright 2011 Kohana-World Development Team
+ */
 class Developer {
 
 	public static $stats = array(
@@ -39,7 +47,7 @@ class Developer {
 		$user = $user_api->show($username);
 		// set 'username' field
 		$dev = Jelly::factory('developer')->load_github_data($username, $user);
-		
+
 		return $dev->id();
 	}
 

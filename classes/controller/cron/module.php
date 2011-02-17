@@ -1,5 +1,13 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Controller Cron_Module
+ *
+ * @package   KW-Modules
+ * @author	  Kohana-World Development Team
+ * @license	  MIT License
+ * @copyright 2011 Kohana-World Development Team
+ */
 class Controller_Cron_Module extends Controller_Cron {
 
 	/**

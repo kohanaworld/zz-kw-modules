@@ -1,5 +1,13 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Jelly Model Developer
+ *
+ * @package   KW-Modules
+ * @author	  Kohana-World Development Team
+ * @license	  MIT License
+ * @copyright 2011 Kohana-World Development Team
+ */
 class Model_Developer extends Jelly_Model {
 
 	public static function initialize(Jelly_Meta $meta)

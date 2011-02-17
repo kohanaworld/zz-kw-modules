@@ -1,5 +1,13 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
+/**
+ * Module helper
+ *
+ * @package   KW-Core
+ * @author	  Kohana-World Development Team
+ * @license	  MIT License
+ * @copyright 2011 Kohana-World Development Team
+ */
 class Module {
 
 	public static $stats = array(
