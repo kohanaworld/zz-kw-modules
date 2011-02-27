@@ -38,9 +38,11 @@ class Model_Module_Info extends Jelly_Model {
 				'date_update'   => new Jelly_Field_Timestamp(array(
 					'auto_now_update' => TRUE,
 					'auto_now_create' => TRUE,
+					'pretty_format' => 'j M Y',
 				)),
 				'pushed_at'     => new Jelly_Field_Timestamp(array(
 					'column'        => 'date_update_github',
+					'pretty_format' => 'j M Y',
 				)),
 				'module'        => new Jelly_Field_BelongsTo,
 			));

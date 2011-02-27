@@ -40,6 +40,8 @@ class Model_Developer extends Jelly_Model {
 			)),
 			'info'        => new Jelly_Field_HasOne(array(
 				'foreign'     => 'developer_info',
+			)),
+			'modules'     => new Jelly_Field_HasMany(array(
 			))
 		));
 	}
@@ -88,5 +90,27 @@ class Model_Developer extends Jelly_Model {
 
 		return $this;
 
+	}
+
+	public function find_by_name($username)
+	{
+		return Jelly::query($this)->where('username', '=', $username)->limit(1)->execute($this->_meta->db());
+	}
+
+	public function get_modules($limit = NULL, $offset = NULL)
+	{
+		if ($limit === NULL AND $offset === NULL)
+		{
+			return $this->modules;
+		}
+
+		$result = $this->get('modules')->page($limit, $offset);
+
+		return $result->select();
+	}
+
+	public function get_module_count()
+	{
+		return $this->get('modules')->count();
 	}
 }

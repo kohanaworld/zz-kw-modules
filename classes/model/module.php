@@ -12,7 +12,8 @@ class Model_Module extends Jelly_Model {
 
 	public static function initialize(Jelly_Meta $meta)
 	{
-		$meta->fields(array(
+		$meta
+			->fields(array(
 			'id'            => new Jelly_Field_Primary,
 			'name'          => new Jelly_Field_String,
 			'fullname'      => new Jelly_Field_String(array(
@@ -26,6 +27,7 @@ class Model_Module extends Jelly_Model {
 			'homepage'      => new Jelly_Field_String,
 			'created_at'    => new Jelly_Field_Timestamp(array(
 				'column'        => 'date_create',
+				'pretty_format' => 'j M Y',
 			)),
 			'has_wiki'      => new Jelly_Field_Boolean,
 			'has_issues'    => new Jelly_Field_Boolean,
@@ -88,5 +90,26 @@ class Model_Module extends Jelly_Model {
 				  ->as_array('fullname', 'id');
 	}
 
+	public function find_by_fullname($fullname)
+	{
+		return Jelly::query($this)->where('fullname', '=', $fullname)->limit(1)->execute($this->_meta->db());
+	}
 
+	public function get_modules($limit = NULL, $offset = NULL)
+	{
+		// @TODO add is_active flag etc
+		$result = Jelly::query($this);
+		if ($limit OR $offset)
+		{
+			$result->page($limit, $offset);
+		}
+
+		return $result->select();
+	}
+
+	public function get_count()
+	{
+		return Jelly::query($this)->count();
+	}
+	
 }
