@@ -42,10 +42,10 @@ class Model_Module extends Jelly_Model {
 	}
 
 	/**
-	 * @param  $data
+	 * @param  array $data
 	 * @return void
 	 */
-	public function process_crawler($data)
+	public function process_crawler(array $data)
 	{
 		foreach($data as & $module)
 		{
@@ -73,7 +73,7 @@ class Model_Module extends Jelly_Model {
 	}
 
 	/**
-	 * @param array $names
+	 * @param  array $names
 	 * @return array
 	 */
 	public function get_available(array $names)
@@ -90,26 +90,38 @@ class Model_Module extends Jelly_Model {
 				  ->as_array('fullname', 'id');
 	}
 
+	/**
+	 * @param  $fullname
+	 * @return Database_Result|object
+	 */
 	public function find_by_fullname($fullname)
 	{
 		return Jelly::query($this)->where('fullname', '=', $fullname)->limit(1)->execute($this->_meta->db());
 	}
 
+	/**
+	 * @param  int|null $limit
+	 * @param  int|null $offset
+	 * @return Jelly_Collection|Jelly_Model
+	 */
 	public function get_modules($limit = NULL, $offset = NULL)
 	{
 		// @TODO add is_active flag etc
 		$result = Jelly::query($this);
 		if ($limit OR $offset)
 		{
-			$result->page($limit, $offset);
+			$result->page((int) $limit, (int) $offset);
 		}
 
 		return $result->select();
 	}
 
+	/**
+	 * @return int
+	 */
 	public function get_count()
 	{
 		return Jelly::query($this)->count();
 	}
-	
+
 }
