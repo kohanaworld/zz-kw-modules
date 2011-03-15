@@ -7,4 +7,4 @@ $mod_view = View::factory('frontend/module/item')->bind('module', $module);
 		<li><?php echo $mod_view ?></li>
 	<?php endforeach ?>
 </ul>
-<?php echo $pagination ?>
+<?php //echo $pagination ?>
