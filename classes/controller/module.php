@@ -95,4 +95,9 @@ class Controller_Module extends Controller_Template {
 			->set('pagination', $pagination);
 	}
 
+	public function after()
+	{
+			StaticCss::instance()->addCss('/media/css/module_list.css');
+			parent::after();
+	}
 }
