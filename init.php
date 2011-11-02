@@ -13,7 +13,7 @@ Route::set('modules', 'modules(/<developer>(/<module>(/<action>)))', array('modu
 		'controller' => 'module',
 	));
 
-/*Route::set('github_links', "<developer>(/<module>)(/<section>)")
+Route::set('github_links', "<developer>(/<module>)(/<section>)")
 	->defaults(array(
 		'host'      => 'https://github.com',
-	));*/
+	));
