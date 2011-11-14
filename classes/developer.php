@@ -28,7 +28,7 @@ class Developer {
 
 		foreach($names as $username)
 		{
-			if (isset($exist[$username]))
+			if (isset($exist[strtolower($username)]))
 			{
 				continue;
 			}

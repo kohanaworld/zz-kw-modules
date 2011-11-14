@@ -49,7 +49,7 @@ class Module {
 
 		foreach($data as & $module)
 		{
-			$dev_id = arr::get($owners, $module['owner'], FALSE);
+			$dev_id = arr::get($owners, strtolower($module['owner']), FALSE);
 
 			if ( ! $dev_id)
 			{
