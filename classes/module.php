@@ -58,7 +58,8 @@ class Module {
 				continue;
 			}
 			$module['developer'] = $dev_id;
-			if ($id = arr::get($names, $module['fullname'], FALSE))
+			$module['fullname_lower'] = strtolower($module['fullname']);
+			if ($id = arr::get($names, $module['fullname_lower'], FALSE))
 			{
 				// this is an existing module, so we need to update it
 				$module['id'] = $id;

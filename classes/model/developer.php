@@ -55,10 +55,12 @@ class Model_Developer extends Jelly_Model {
 		{
 			return array();
 		}
+
+		$names = array_map('strtolower', $names);
 		$meta = $this->_meta;
 		return DB::select('id', 'username_lower')
 				  ->from($meta->table())
-				  ->where('username', 'IN', $names)
+				  ->where('username_lower', 'IN', $names)
 				  ->execute($meta->db())
 				  ->as_array('username_lower', 'id');
 	}
@@ -66,6 +68,7 @@ class Model_Developer extends Jelly_Model {
 	public function load_github_data($username, array $user)
 	{
 		$user['username'] = $username;
+		$user['username_lower'] = strtolower($username);
 		$user['url'] = 'http://github.com/'.$username;
 		$user['github_id'] = $user['id'];
 		unset($user['id']);

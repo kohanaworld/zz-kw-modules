@@ -20,6 +20,10 @@ class Model_Module extends Jelly_Model {
 				'unique'            => TRUE,
 				'allow_null'        => FALSE,
 			)),
+			'fullname_lower' => new Jelly_Field_String(array(
+				'unique'            => TRUE,
+				'allow_null'        => FALSE,
+			)),
 			'description'   => new Jelly_Field_Text,
 			'url'           => new Jelly_Field_String(array(
 				'allow_null'        => FALSE,
@@ -33,7 +37,7 @@ class Model_Module extends Jelly_Model {
 			'has_issues'    => new Jelly_Field_Boolean,
 			'has_downloads' => new Jelly_Field_Boolean,
 			'developer'     => new Jelly_Field_BelongsTo(array(
-				'allow_null'        => TRUE,
+				'allow_null'        => FALSE,
 			)),
 			'info'          => new Jelly_Field_HasOne(array(
 				'foreign'           => 'module_info',
@@ -82,12 +86,14 @@ class Model_Module extends Jelly_Model {
 		{
 			return array();
 		}
+		$names = array_map('strtolower', $names);
+
 		$meta = $this->_meta;
-		return DB::select('id', 'fullname')
+		return DB::select('id', 'fullname_lower')
 				  ->from($meta->table())
-				  ->where('fullname', 'IN', $names)
+				  ->where('fullname_lower', 'IN', $names)
 				  ->execute($meta->db())
-				  ->as_array('fullname', 'id');
+				  ->as_array('fullname_lower', 'id');
 	}
 
 	/**
