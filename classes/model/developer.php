@@ -15,11 +15,11 @@ class Model_Developer extends Jelly_Model {
 		$meta->fields(array(
 			'id'             => new Jelly_Field_Primary,
 			'username'       => new Jelly_Field_String(array(
-				'unique'        => TRUE,
+				//'unique'        => TRUE,
 				'allow_null'    => FALSE,
 			)),
 			'username_lower' => new Jelly_Field_String(array(
-				'unique'        => TRUE,
+				//'unique'        => TRUE,
 				'allow_null'    => FALSE,
 			)),
 			'name'           => new Jelly_Field_String(array(
