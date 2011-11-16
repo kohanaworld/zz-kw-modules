@@ -17,11 +17,11 @@ class Model_Module extends Jelly_Model {
 			'id'            => new Jelly_Field_Primary,
 			'name'          => new Jelly_Field_String,
 			'fullname'      => new Jelly_Field_String(array(
-				'unique'            => TRUE,
+				//'unique'            => TRUE,
 				'allow_null'        => FALSE,
 			)),
 			'fullname_lower' => new Jelly_Field_String(array(
-				'unique'            => TRUE,
+				//'unique'            => TRUE,
 				'allow_null'        => FALSE,
 			)),
 			'description'   => new Jelly_Field_Text,
