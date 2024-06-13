@@ -1,1 +1,1 @@
-Module managment for Kohana-world.com project
+Module managment for Kohana.world project
